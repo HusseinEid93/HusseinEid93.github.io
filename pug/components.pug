@@ -1,0 +1,41 @@
+mixin logo 
+   a.d-block(href="#") 
+      img.w-100(src="../images/logo.png")
+
+
+mixin header 
+   header.header.w-100 
+      .container.h-100.justify-content-between(class=centerVertically)
+         .header__logo: +logo()
+         
+         ul.header__navigation.d-flex.flex-column.flex-lg-row.align-items-lg-center.align-items-start
+            li.header__item 
+               a.d-block(href="#") Premium  
+            li.header__item 
+               a.d-block(href="#") Support  
+            li.header__item 
+               a.d-block(href="#") Download  
+            li(
+               class="header__item header__item--separator bg-white"
+            ) 
+            li.header__item.header__item--signUp 
+               a.d-block(href="#") Sign up 
+            li.header__item.header__item--logIn 
+               a.d-block(href="#") Log in 
+            li.header__item.header__item--logo.d-lg-none.position-absolute: +logo()
+
+         .header__toggle.flex-column.d-lg-none.position-relative(class=centerHorizontally) 
+            - for(let i = 1; i <= 3; i++) 
+               span.w-100.bg-white.rounded-sm
+
+
+mixin footerList(listItems) 
+   ul.footer__list
+      li.footer__link.footer__link--description.text-uppercase= listItems[0]
+      - for(let i = 1; i < listItems.length; i++)
+         li.footer__link: a(href="#") #{listItems[i]}
+
+
+mixin footerSocial(fontAwesomeClasses) 
+   .footer__social(class=flex)
+      i(class=fontAwesomeClasses)

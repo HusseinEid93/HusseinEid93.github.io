@@ -1,0 +1,69 @@
+include components
+include globals
+
+
+doctype html 
+html(lang="en")
+   head 
+      meta(charset="UTF-8")
+      meta(http-equiv="X-UA-Compatible" content="IE=edge")
+      meta(
+         name="viewport" 
+         content="width=device-width, initial-scale=1.0"
+      )
+      link(
+         rel="stylesheet" 
+         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      )
+      link(rel="stylesheet" href="../css/bootstrap.css")
+      link(rel="stylesheet" href="../css/index.css")
+      // Favicon 
+      link(
+         rel="shortcut icon" 
+         type="image/png"
+         href="../images/favicon.png"
+      )
+      script(src="../script.js" defer) 
+      title Listening is everything - Spotify
+
+   body 
+      // Overlay  
+      #overlay.position-absolute.w-100
+
+
+      // Start the header 
+      +header()
+
+
+      // Start the showcase section 
+      section.showcase.flex-column.text-center(class=flex)
+         h1.mb-4.showcase__heading #[span.d-block Listening is] everything
+         p.showcase__paragraph Millions of songs and podcasts. No credit card needed.
+         a.showcase__button(href="#") get spotify free
+
+
+      // Start the footer 
+      footer.footer
+         .container.mx-0.mx-md-auto 
+            nav.footer__navigation
+               .footer__logo.mb-5.mb-lg-0: +logo()
+               .footer__lists.position-relative 
+                  +footerList(list1) 
+                  +footerList(list2)
+                  +footerList(list3) 
+               .footer__socials.d-flex.position-relative
+                  +footerSocial(['fab', 'fa-instagram'])
+                  +footerSocial(['fab', 'fa-twitter'])
+                  +footerSocial(['fab', 'fa-facebook-f'])
+
+            .footer__country.justify-content-end(class=centerVertically)
+               a(href="#") 
+                  i.mr-2(class="fas fa-globe-americas")
+                  span USA
+
+            .footer__bottomLinks.d-flex
+               ul.footer__bottomList.d-flex.flex-wrap
+                  each item in list4 
+                     li.footer__bottomLink 
+                        a(href="#") #{item}
+               .footer__copyright.ml-auto(href="#") &copy; 2021 Spotify AB
